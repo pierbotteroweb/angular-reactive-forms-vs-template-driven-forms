@@ -1,0 +1,24 @@
+<form #userForm="ngForm" (ngSubmit)="submit(userForm)">
+    <input name="name" ngModel required minlength="3" placeholder="Name" #name="ngModel">
+
+    <div *ngIf="name.invalid && name.touched">
+        <div *ngIf="name.errors?.required">Name is required</div>
+        <div *ngIf="name.errors?.minLength">Minimum 3 characters</div>
+    </div>
+    
+    <input name="email" ngModel required placeholder="Email" #email="ngModel">
+    <div *ngIf="email.invalid && email.touched">
+        <div *ngIf="email.errors?.required">Email is required</div>
+        <div *ngIf="email.errors?.email">Invalid</div>
+    </div>
+
+    <input name="password" ngModel required minLength="6" type="password" placeholder="Password" #password="ngModel">
+    <div *ngIf="password.invalid && password.touched">
+        <div *ngIf="password.errors?.required">password is required</div>
+        <div *ngIf="password.errors?.minLength">Minimum 5 characters</div>
+    </div>
+
+    <button type="submitt" [disabled]="userForm.invalid">Register</button>
+
+
+</form>

@@ -1,0 +1,15 @@
+<form [formGroup]="userForm" (ngSubmitt)="submit()" >
+    <input formControlName="name" placeholder="name">
+    <div *ngIf="userForm.get('name')?.errors?.minlength">Name too short</div>
+    
+    <input formControlName="email" placeholder="Email">
+    <div *ngIf="userForm.get('email')?.errors?.email">Invalid Email</div>
+    
+    <input type="password" formControlName="password" placeholder="Password">
+    
+    <input formControlName="username" placeholder="Username">
+    <div *ngIf="userForm.get('username')?.errors?.forbiddenName">Username "admin" is not allowed</div>
+
+    <button type="submit" [disabled]="userForm.invalid">Register</button>
+
+</form>
